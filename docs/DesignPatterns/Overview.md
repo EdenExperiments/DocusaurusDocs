@@ -1,4 +1,4 @@
-# C# Design Patterns Overview
+# Design Patterns Overview
 
 Design patterns are **general, reusable solutions** to commonly occurring problems in software development. They provide well-established best practices that help developers write maintainable, scalable, and flexible code. Understanding these patterns allows for better design decisions and more efficient software architecture.
 

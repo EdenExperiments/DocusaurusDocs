@@ -6,13 +6,42 @@ The Factory Method Pattern defines an interface for creating an object but allow
 
 In C#, this typically involves an interface or abstract class that defines a contract, with concrete classes implementing the behavior.
 
+Below are some basic examples 
+
 ```
-public interface IPerson { void Speak(); }  
-public class Student : IPerson { public void Speak() => Console.WriteLine("I am a student."); }  
-public class Employee : IPerson { public void Speak() => Console.WriteLine("I am an employee."); }  
+// Step 1: Define the Interface
+public interface IPerson { void Speak(); }
+
+// Step 2: Concrete Implementations
+public class Student : IPerson { public void Speak() => Console.WriteLine("I am a student."); }
+public class Employee : IPerson { public void Speak() => Console.WriteLine("I am an employee."); }
+
+// Step 3: Abstract Factory
+public abstract class PersonFactory { public abstract IPerson CreatePerson(); }
+
+// Step 4: Concrete Factories
+public class StudentFactory : PersonFactory { public override IPerson CreatePerson() => new Student(); }
+public class EmployeeFactory : PersonFactory { public override IPerson CreatePerson() => new Employee(); }
 ```
 
-Then we only instantiate from above and each will be similar but slightly different in implementation
+A Simple Factory of the above (Suitable for smaller applications)
+
+```
+// Simple Factory
+public static class PersonFactory
+{
+    public static IPerson CreatePerson(string type)
+    {
+        return type.ToLower() switch
+        {
+            "student" => new Student(),
+            "employee" => new Employee(),
+            _ => throw new ArgumentException("Invalid person type")
+        };
+    }
+}
+```
+This has a centralised object creation, reduces duplicated code, but violates the open/closed principle, adding more types means changing PersonFactory, rather than adding a new subclass.
 
 ## Example
 

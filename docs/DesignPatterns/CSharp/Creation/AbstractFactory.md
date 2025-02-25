@@ -2,9 +2,16 @@
 
 ## Intent
 
-The intent of the abstract factory pattern is to provide an interface for creating families of related or dependent objects without specifying their concrete classes
+The Abstract Factory design pattern provides an interface for creating families of related or dependent objects without specifying their concrete classes. This pattern allows the client to create objects from a particular family or group of related objects, ensuring that the objects are designed to work together seamlessly. It promotes loose coupling in the system by decoupling the creation of objects from their actual usage, which enables easier maintenance and expansion of the code.
 
+The primary goal of the abstract factory pattern is to provide a way to delegate the responsibility of object creation to specialized factory classes that encapsulate the logic for creating related objects. By doing so, it helps in promoting flexibility and maintainability in complex systems where families of objects are interchangeable or need to be switched without changing the client code.
+Structure
 
+- AbstractFactory: Declares an interface for creating abstract product families. Each family represents a set of- related objects.
+- ConcreteFactory: Implements the abstract factory interface and is responsible for creating concrete products.
+- AbstractProduct: Defines a product interface. Each product in the family will follow this interface.
+- ConcreteProduct: Implements the abstract product interface and represents a specific variation of a product.
+- Client: Uses only the abstract factory interface and interacts with the concrete products without needing to know- about their exact implementations.
 
 ## C# Code Examples
 

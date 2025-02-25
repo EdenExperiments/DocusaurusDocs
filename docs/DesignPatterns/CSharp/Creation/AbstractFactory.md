@@ -108,19 +108,18 @@ namespace AbstractFactory
     }
 }
 ```
-
 ## Use Cases
 
-- Supporting Multiple Languages - can create language specific resource loaders.
-- Converting documents to multiple different formats 
-- Abstracting away database access layer - can provide database specific connections
-- Supporting different application themes/styles.
+✅ Multi-Language Support – Enables creating language-specific resource loaders for localization.\
+✅ Document Format Conversion – Facilitates generating documents in multiple formats (e.g., PDF, Word, HTML).\
+✅ Database Abstraction – Provides a flexible way to create database-specific connections without modifying client code.\
+✅ Theming & Styling – Helps in switching between different UI themes or application styles dynamically.\
 
 ## Consequences
 
-Isolates concreate classes, encapsulating responsibility and the process of creating product objects
-Can easily add new products without changing existing code. open/Closed principle/
-Code to create products is contained in one place. Single Responsibility Principle
-Can easily swap product families
-Promotes consistency between products in the family
-supporting new kinds of products is difficult
+✅ Encapsulation & Decoupling – Isolates concrete classes and centralizes the object creation process.\
+✅ Extensibility (Open/Closed Principle) – New product families can be introduced without modifying existing code.\
+✅ Single Responsibility Principle – Keeps product creation logic in a dedicated factory, improving maintainability.\
+✅ Interchangeability – Easily swap between different product families without changing client code.\
+✅ Consistency – Ensures all products in a family follow the same standards and behavior.\
+⚠️ Difficult to Extend – Adding new product types may require modifying multiple factory classes, increasing complexity.\

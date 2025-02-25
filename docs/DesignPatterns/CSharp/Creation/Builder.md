@@ -172,23 +172,23 @@ Car of type BMW has part 'A fancy v8 engine'. Car of type BMW has part '5-door w
 
 ### When to Use the Builder Pattern
 
-✅ Decoupling Construction & Representation – Useful when you need to separate how an object is built from what it represents.
-✅ Multiple Representations – Enables constructing different variations of an object using the same process.
-✅ Complex Object Creation – Ideal for objects with numerous components or configurable properties.
+✅ Decoupling Construction & Representation – Useful when you need to separate how an object is built from what it represents.\
+✅ Multiple Representations – Enables constructing different variations of an object using the same process.\
+✅ Complex Object Creation – Ideal for objects with numerous components or configurable properties.\
 
 ### Real-World Applications
 
-📝 Document Generation – Building structured documents with different formats (PDF, HTML, Markdown).
-🎨 UI Generation – Constructing user interfaces dynamically based on user input or configuration.
-🛢️ Database Query Building – Creating SQL queries or NoSQL structures using a step-by-stepapproach.
-🎮 Game Development – Designing complex game characters, levels, or items with customizableattributes.
+📝 Document Generation – Building structured documents with different formats (PDF, HTML, Markdown).\
+🎨 UI Generation – Constructing user interfaces dynamically based on user input or configuration.\
+🛢️ Database Query Building – Creating SQL queries or NoSQL structures using a step-by-stepapproach.\
+🎮 Game Development – Designing complex game characters, levels, or items with customizableattributes.\
 
 ## Consequences
 
-✅ Flexible Representation: Allows variation in a product’s internal structure and implementation.
-✅ Encapsulation: Separates construction from representation, enhancing modularity and maintainability.
-✅ Fine-Grained Control: Provides step-by-step customization of object creation.
-⚠️ Increased Complexity: Introduces multiple builder classes, which can make the codebase harder to manage.
+✅ Flexible Representation: Allows variation in a product’s internal structure and implementation.\
+✅ Encapsulation: Separates construction from representation, enhancing modularity and maintainability.\
+✅ Fine-Grained Control: Provides step-by-step customization of object creation.\
+⚠️ Increased Complexity: Introduces multiple builder classes, which can make the codebase harder to manage.\
 
 ## Variations
 

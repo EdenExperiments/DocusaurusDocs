@@ -2,7 +2,7 @@
 
 Broken Access Control or Broken Object Level Authorisation (BOLA) occurs when an API fails to enforce proper permissions for objects within its endpoints. BOLA allows attackers to manipulate object identifiers (such as IDs) to access and modify resources which they should not have access to. This is typically down to inadequate authorisation checks within an API.
 
-An example of this may be allowing data to be retrieved by modifying parameters within a request or directly in a URL such as orderID, or attempting urls which you shouldn't have access too, but without sufficient checks HTML is supplied regardless.
+For example, an API may allow data retrieval by modifying parameters within a request or directly in a URL such as orderID, or attempting URLs you shouldn’t have access to, but without sufficient checks HTML is supplied regardless.
 
 In 2024 it was reported over 75% of API vulnerabilities were due to inadequate access control. 
 
@@ -15,7 +15,7 @@ public IActionResult GetReservations(string id) {
 
     //Fetch reservations for the current user
     var reservations = dbContext.Reservations
-        .Where(r => r.UserId = id)
+        .Where(r => r.UserId == id)
         .ToList();
 
     return OK(reservations);
@@ -57,7 +57,7 @@ echo "All data has been saved to $output_file"
 
 ## How to mitigate Examples
 
-Mitigating these exploits depends on the nature of the application, but in general it is the useage of policies and server-side checks to validate user permissions for each resource. It is best to be able to do this as close to the front-end as possible, e.g. Middleware, framework features to enforce checks globally.
+Mitigating these exploits depends on the nature of the application, but in general it is the useage of policies and server-side checks to validate user permissions for each resource. It is best to enforce this as early as possible in the request lifecycle, such as via middleware or framework-level policies.
 
 Another is to not use any predictable ID within the endpoint parameters such as a users UserID, but to use a unique identifier which is a 128-bit number or 36 character string (For Example using NEWID() within a SQL Server backend to create a unique identifier). 
 
@@ -89,3 +89,69 @@ public IActionResult GetReservations(string id) {
 
 ## Role-Based Access Control (RBAC)
 
+Role-based access control restricts access based on a persons role within an organisation, and is currently on the main methods for access control within applications.
+
+This is both very efficient, as companies only need to ensure their employees are in their correct role within software, and they should have access to the aspects of software which is needed within their role, and it assists in ensuring that users do not get access to functionality, and data that they should not be getting.|
+
+We can implement this with an Authorize attribute in .NET codebases as seen below, where we only allow a Finanace or HR user to use the SalaryController
+
+```
+[Authorize(Roles="Finance,HR")]
+public class SalaryController : Controller 
+{
+    public IActionResult Payslip() => Content("HR || Finance");
+}
+```
+
+In .NET Codebases we also can create more modular authorisation by applying this attribute to methods
+
+```
+[Authorize(Roles = "Administrator || Developer")]
+public class ControlAllPanelController : Controller 
+{
+    public IActionResult SetTime() => Content("Administrator || PowerUser");
+
+    [Authorize(Roles="Admministrator")]
+    public IActionResult ShutDown() =>  Content("Administator Only");
+}
+```
+
+## Policy-Based Access Control
+
+Policy-Based Access Control (PBAC) is similar to RBAC but differs in that it enforces rules based on contextual conditions, such as time of access, location, or device used, rather than just predefined user roles. PBAC provides more dynamic and fine-grained control over user permissions, making it well-suited for complex security requirements.
+
+For instance, a system might allow a user to view sensitive reports only during business hours and from an approved company device. Unlike RBAC, which assigns permissions based purely on roles, PBAC adapts to dynamic conditions.
+
+This is done by applying policies during startup of a service like below
+
+```
+services.AddAuthorization(options =>
+{
+    options.AddPolicy("OfficeHoursPolicy", policy =>
+        policy.RequireAssertion(context =>
+        {
+            var user = context.User;
+            var department = user.FindFirst("Department")?.Value;
+            var currentHour = DateTime.UtcNow.Hour;
+
+            return department == "Finance" && currentHour >= 9 && currentHour <= 17;
+        }));
+});
+
+```
+
+```
+var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddRazorPages();
+builder.Services.AddControllersWithViews();
+
+builder.Services.AddAuthorization(options =>
+{
+    options.AddPolicy("RequireAdministratorRole",
+         policy => policy.RequireRole("Administrator"));
+});
+
+```
+
+Policy based can also be more dynamic, but requires more addition to code than role based and increases complexity

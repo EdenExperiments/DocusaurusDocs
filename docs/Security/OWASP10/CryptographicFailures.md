@@ -14,7 +14,7 @@ Suppose a client encrypts a username and password before sending to a server, an
 
 So suppose an eavedropper was able to obtain hash 6eea9b7ef19179a06954edd0f6c05ceb, if using a weak hash, they could use a tool such as crackstation.net, or more expansive tools and see what the password is (especially if users are using weak passwords) like below.
 
-![Crackstation site breaking hash to a commmon password](/img/crackstation.png)
+![Crackstation site breaking hash to a commmon password](/img/CrackStation.png)
 
 ## Bad Code C# Example
 

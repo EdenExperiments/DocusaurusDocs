@@ -1,0 +1,13 @@
+### Minimal API Approach vs. MVC
+
+Starting with .NET 6, Microsoft introduced **Minimal APIs**, a lightweight approach to building APIs. Unlike the traditional MVC model, Minimal APIs focus on simplicity and reduced boilerplate code. Key differences include:
+
+- **Routing**: Minimal APIs use a more concise syntax for defining routes directly in the `Program.cs` file, whereas MVC relies on controllers and attribute-based routing.
+- **Structure**: Minimal APIs do not require the separation of concerns into Models, Views, and Controllers, making them ideal for small or microservices-based applications.
+- **Performance**: Minimal APIs are optimized for performance, with fewer abstractions and faster startup times.
+
+While MVC is better suited for larger, more complex applications, Minimal APIs are a great choice for lightweight and straightforward API development.
+
+### Further Learning
+
+For a deeper dive into Minimal APIs, consider exploring [Kevin Dockx's course on Minimal APIs](https://www.pluralsight.com/courses/minimal-apis-dotnet-introduction). This course provides a comprehensive overview of how to leverage Minimal APIs effectively in .NET applications.

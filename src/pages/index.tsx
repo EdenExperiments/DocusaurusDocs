@@ -21,8 +21,13 @@ function HomepageHeader() {
           <Link
             className="button button--secondary button--lg"
             to="/docs/DesignPatterns/Overview">
-            C# Creation Patterns 📚
+            C# Design Patterns 📚
           </Link>
+          <Link
+            className="button button--secondary button--lg"
+            to="/docs/Security/OwaspTop10Overview">
+            Owasp Top 10 📚 
+          </Link>📚
         </div>
       </div>
     </header>

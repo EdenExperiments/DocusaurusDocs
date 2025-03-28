@@ -27,8 +27,7 @@ Most of this document will focus on the MVC approach, as it is the most common a
 
 Minimal APIs were introduced in .NET 6 and allow developers to create routing directly in the `Program.cs` file without the need for controllers. This approach is particularly useful for small applications or microservices where simplicity and performance are key.
 
-```
-csharp
+```csharp
 // Example of Minimal API routing
 app.MapGet("/api/products", () => 
 {

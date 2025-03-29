@@ -2,23 +2,6 @@
 
 Routing in .NET APIs is a mechanism that maps incoming HTTP requests to specific controller actions or endpoints. It is a fundamental part of building RESTful APIs in ASP.NET Core.
 
-## Table of Contents
-- [Routing in .NET APIs](#routing-in-net-apis)
-  - [Table of Contents](#table-of-contents)
-  - [MVC vs. Minimal API Routing](#mvc-vs-minimal-api-routing)
-  - [Defining Routes](#defining-routes)
-  - [Attribute Routing](#attribute-routing)
-    - [Advantages of Attribute Routing](#advantages-of-attribute-routing)
-  - [Route Constraints](#route-constraints)
-  - [Route Parameters](#route-parameters)
-    - [Required Parameters](#required-parameters)
-    - [Optional Parameters](#optional-parameters)
-  - [Advanced Routing Features](#advanced-routing-features)
-    - [Route Prefixes](#route-prefixes)
-    - [Custom Route Constraints](#custom-route-constraints)
-  - [Best Practices](#best-practices)
-
----
 ## MVC vs. Minimal API Routing
 
 Routing in .NET APIs can be implemented using two primary approaches: **MVC** and **Minimal API**.

@@ -28,5 +28,5 @@ builder.Services.AddProblemDetails(options =>
 
 This example shows how to customize the problem details by adding a custom property to the response. This can be useful for providing additional context or metadata about the error.
 
-There is more information on 'AddProblemDetails' [here](Add%20Problem%20Details.md).
+There is more information on 'AddProblemDetails' [here](../../Services/Add%20Problem%20Details.md).
 This will be shown in the response body when an error occurs, allowing clients to understand the nature of the error and take appropriate action.
